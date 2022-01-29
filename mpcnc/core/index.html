@@ -1,0 +1,1844 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://docs.v1engineering.com/mpcnc/core/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>5-Core - V1 Engineering Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../v1.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#core-assembly" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="V1 Engineering Documentation" class="md-header__button md-logo" aria-label="V1 Engineering Documentation" data-md-component="logo">
+      
+  <img src="../../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            V1 Engineering Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5-Core
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    V1EngineeringInc/V1EngineeringInc-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="V1 Engineering Documentation" class="md-nav__button md-logo" aria-label="V1 Engineering Documentation" data-md-component="logo">
+      
+  <img src="../../img/favicon.ico" alt="logo">
+
+    </a>
+    V1 Engineering Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    V1EngineeringInc/V1EngineeringInc-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Build
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Build" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        MPCNC
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MPCNC" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          MPCNC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction to The MPCNC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PParts/" class="md-nav__link">
+        MPCNC Primo Parts list
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calculator/" class="md-nav__link">
+        Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ptable/" class="md-nav__link">
+        1-Table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pbase/" class="md-nav__link">
+        2-Base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trucks/" class="md-nav__link">
+        3-Trucks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tops/" class="md-nav__link">
+        4-Tops
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5-Core
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        5-Core
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-z-bearings" class="md-nav__link">
+    First Z Bearings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inner-z-bearings" class="md-nav__link">
+    Inner Z Bearings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-clamps" class="md-nav__link">
+    Core Clamps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gantry-rail-tension-bolts" class="md-nav__link">
+    Gantry Rail Tension Bolts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-the-gantry-rails" class="md-nav__link">
+    Setting the Gantry Rails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#truck-locks" class="md-nav__link">
+    Truck Locks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leadscrew-nut" class="md-nav__link">
+    Leadscrew Nut
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PZPage/" class="md-nav__link">
+        6-Z Axis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../squaring/" class="md-nav__link">
+        7-Squaring
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PBelts/" class="md-nav__link">
+        8-Belts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Trouble Shooting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_13" type="checkbox" id="__nav_2_1_13" >
+      
+      <label class="md-nav__link" for="__nav_2_1_13">
+        Previous Version
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Previous Version" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_13">
+          <span class="md-nav__icon md-icon"></span>
+          Previous Version
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/parts/" class="md-nav__link">
+        Parts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_13_3" type="checkbox" id="__nav_2_1_13_3" >
+      
+      <label class="md-nav__link" for="__nav_2_1_13_3">
+        Assembly
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Assembly" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/table/" class="md-nav__link">
+        Table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/conduit/" class="md-nav__link">
+        Conduit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/base/" class="md-nav__link">
+        Corners, Rollers, Base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/z-axis/" class="md-nav__link">
+        Z-Axis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/middle-assm/" class="md-nav__link">
+        Middle Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/gantry/" class="md-nav__link">
+        Gantry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/final/" class="md-nav__link">
+        Final
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../burly/belts/" class="md-nav__link">
+        Belts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        LowRider
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="LowRider" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          LowRider
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/calculator/" class="md-nav__link">
+        Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/version1/" class="md-nav__link">
+        Old Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        MP3DP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MP3DP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          MP3DP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/" class="md-nav__link">
+        Current Version
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/repeatassm/" class="md-nav__link">
+        Repeat Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3_3">
+        Previous Versions
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Previous Versions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Previous Versions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/version2/" class="md-nav__link">
+        Second Version
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/version1/" class="md-nav__link">
+        First Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        ZenXY
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ZenXY" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          ZenXY
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/" class="md-nav__link">
+        ZenXY v2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/zen2calculator/" class="md-nav__link">
+        ZenXY v2 Build Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/zen2assm1/" class="md-nav__link">
+        ZenXY v2 Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/og_zen/" class="md-nav__link">
+        Previous Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Control
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Some Control Board Options
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Some Control Board Options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Some Control Board Options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/skrpro/" class="md-nav__link">
+        SKR Pro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/ultimachine/" class="md-nav__link">
+        Ultimachine Boards
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/ramps/" class="md-nav__link">
+        Ramps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Steppers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Steppers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Steppers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/steppers/" class="md-nav__link">
+        Wiring The Steppers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Some Advanced Options
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Some Advanced Options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Some Advanced Options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/v1pi/" class="md-nav__link">
+        V1pi - Headless
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/dual-endstops/" class="md-nav__link">
+        Dual Endstops
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/dual-lr/" class="md-nav__link">
+        Dual Endstops Low Rider
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Use
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Use" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Use
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      <label class="md-nav__link" for="__nav_4_1">
+        Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      <label class="md-nav__link" for="__nav_4_1_1">
+        Milling
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Milling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Milling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/milling-basics/" class="md-nav__link">
+        Milling Basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/estlcam-basics/" class="md-nav__link">
+        EstlCAM Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/estlcam-2p5d/" class="md-nav__link">
+        EstlCAM Intermediate (2.5d)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/milling-metal/" class="md-nav__link">
+        Milling Metal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/Fengrave-vcarve-inlay/" class="md-nav__link">
+        F Engrave V-Carve
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      <label class="md-nav__link" for="__nav_4_1_2">
+        3D Printing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3D Printing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Printing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/import-extruder/" class="md-nav__link">
+        Import Extruder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      <label class="md-nav__link" for="__nav_4_1_3">
+        Lasers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Lasers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lasers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/lasers/" class="md-nav__link">
+        Main
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/laser-engraving-mirrors/" class="md-nav__link">
+        Engraving Mirrors
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/drag-knife/" class="md-nav__link">
+        Drag Knife/Vinyl
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/foam-needle-cutter/" class="md-nav__link">
+        Needle Cutter
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Troubleshoot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Troubleshoot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshoot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/reverse-motor/" class="md-nav__link">
+        Reversing a Stepper
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Learn
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Learn" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Learn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs_info/" class="md-nav__link">
+        Editing mkdocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/software_overview/" class="md-nav__link">
+        Software Workflow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/repetier-host/" class="md-nav__link">
+        Repetier-Host
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/marlin-firmware/" class="md-nav__link">
+        Marlin Firmware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/xloader/" class="md-nav__link">
+        XLoader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/platformio/" class="md-nav__link">
+        PlatformIO
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronics/arduino/" class="md-nav__link">
+        Arduino
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/gcode/" class="md-nav__link">
+        G-code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/motion/" class="md-nav__link">
+        Motion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/coordinates/" class="md-nav__link">
+        Coordinates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/edit/master/docs/mpcnc/core.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="core-assembly">Core Assembly<a class="headerlink" href="#core-assembly" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="first-z-bearings">First Z Bearings<a class="headerlink" href="#first-z-bearings" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ1-scaled.jpg" width="400" /></a></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Take these steps in order. The Core is very dependent on the order of assembly.</p>
+</div>
+<ul>
+<li>You will need 4 bolts, nuts, bearings, and the Core printed part</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Snap the bearings into the slots.<ul>
+<li>You can line them up and give them a tap with the ratchet handle and they should pop into place.</li>
+<li>This is intentional to add rigidity.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you pop the bearings in too far or need to get them out, the rear has a hole for an Allen key to push them back out.</p>
+</div>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ3-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreBZ3-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Paying attention to the direction of the bolt heads, insert the bolts and nuts.</li>
+<li>Snug these bolts up, just 1/16<sup>th</sup> of a turn past seated (touching the plastic on both sides).</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Ratchets are dangerous here. We only need 7in/lbs or so. It is next to nothing. Loose is better
+than too tight. That is true for all of these steps.</p>
+</div>
+<hr />
+<h2 id="inner-z-bearings">Inner Z Bearings<a class="headerlink" href="#inner-z-bearings" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreIZ1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreIZ1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>4 more bolts, nuts, and bearings</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreIZ2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreIZ2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Attach all 4 bearings, paying attention to the direction of the bolt heads (for Z clearance).</li>
+<li>Snug these up, 7in/lbs, just past seated.</li>
+</ul>
+<hr />
+<h2 id="core-clamps">Core Clamps<a class="headerlink" href="#core-clamps" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>For each Core Clamp printed part you will also need 2 bolts, 2 nuts, and 2 bearings.</li>
+<li>The bolt head direction and the part orientation are easy to miss. Pay attention to the pictures
+    to make sure you don&rsquo;t have clearance issues later.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>This first one is the Core Clamp<strong>Y</strong>.</li>
+<li>The flat side faces towards the logo and needs to be in this location.</li>
+<li>The Core ClampY is specifically made to clear a bolt head on the Truck.</li>
+<li>Two bearings are at an angle between the Core and Core Clamp. Insert the top bearing and bolt first, then the bottom.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don&rsquo;t miss these two bearings.</p>
+</div>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY3-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreXY3-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Add All 4 sets.</li>
+<li>Snug up all these bolts, 7in/lbs, just past seated. Do not crush the 1 mm spacers.</li>
+<li>Double-check the part orientation. Flat sides of the Core Clamps face away from each other.</li>
+<li>Notice where the Core ClampY part is located.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The holes in the Core Clamps are just for you to mount things if you need a spot. The holes fit M5s (or cable ties).</p>
+</div>
+<hr />
+<h2 id="gantry-rail-tension-bolts">Gantry Rail Tension Bolts<a class="headerlink" href="#gantry-rail-tension-bolts" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>4 bolts and bearings</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Slide a bearing in the Core Clamps.</li>
+<li>The bolt heads should all be up - let gravity keep them in place.</li>
+<li>Do not use a nut yet.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ3-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreYZ3-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>All 4 bolt heads up, no nuts yet.</li>
+</ul>
+<hr />
+<h2 id="setting-the-gantry-rails">Setting the Gantry Rails<a class="headerlink" href="#setting-the-gantry-rails" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreRail1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/CoreRail1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>You will need a rail and nuts for each tension bolt.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/Core-Rail2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/Core-Rail2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Slide the rail in the assembly.</li>
+<li>The rail should have slight tension and feel good with no nuts in place.</li>
+<li>All the bearings should be making contact.<ul>
+<li>If your rail is loose or too tight there could be other issues.</li>
+</ul>
+</li>
+<li>At this point, put the nuts on. Carefully seat the nuts just to lock in the current tension.<ul>
+<li>A very light touch is needed here. You will be coming back to these so just seat the bolts and nuts.</li>
+</ul>
+</li>
+<li>The rails should have a slight drag and feel the same with and without the nuts in place.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>More tension is not better. Too loose and too tight are bad. If your rails did not have a good feeling tension like the Trucks in the earlier steps please stop and ask in the forums for help.
+If the rails feel really tight before adding the tension nuts with the rail in place loosen and tighten the two other nuts and bolts in each Core Clamp. This can give extra room if needed.</p>
+</div>
+<hr />
+<h2 id="truck-locks">Truck Locks<a class="headerlink" href="#truck-locks" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/TLock1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/TLock1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Add both gantry rails.</li>
+<li>The open face of the Core should face the 0,0 corner (left nearest corner).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Because of the asymmetry of the Trucks, if the Core doesn&rsquo;t point to 0,0, the work area will be
+smaller.</p>
+</div>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/TLock2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/TLock2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>Snug up the Truck Clamps.</li>
+<li>There is a gap here, same as the clamping parts. Do not try to close the gap.</li>
+<li>No need to stop the rails from rotating but there should be resistance.</li>
+</ul>
+<h2 id="leadscrew-nut">Leadscrew Nut<a class="headerlink" href="#leadscrew-nut" title="Permanent link">&para;</a></h2>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/Znut1-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/Znut1-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>You will need the brass T8 lead screw nut and two M3x10 screws.</li>
+</ul>
+<p><div class="lightgallery"><a data-sub-html="Primo layout" href="https://www.v1engineering.com/wp-content/uploads/2020/06/Znut2-scaled.jpg"><img alt="Primo layout" src="https://www.v1engineering.com/wp-content/uploads/2020/06/Znut2-scaled.jpg" width="400" /></a></div></p>
+<ul>
+<li>The nut has, and needs, some wiggle room.</li>
+<li>Seat two of the screws and then back them off about &frac12; turn.</li>
+<li>You should just be able to move the nut forward and backwards but not up and down.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This has to move to help with the Z screw alignment. Too tight and you can get binding.
+Another tip is to screw them in as shown in the picture, then move the nut back (away from them). If you find you are getting some binding, try moving the screws to the back instead. Left or right can also work.</p>
+</div>
+<hr />
+<p><img alt="slow clap" src="https://media.tenor.co/images/657e144fa560d4ad525ff71651f24a7d/raw" /></p>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../tops/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              4-Tops
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../PZPage/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              6-Z Axis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA</a> Copyright 2021 V1Engineering Inc.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://v1engineering.com" target="_blank" rel="noopener" title="v1engineering.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://shop.v1engineering.com" target="_blank" rel="noopener" title="shop.v1engineering.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M504.717 320H211.572l6.545 32h268.418c15.401 0 26.816 14.301 23.403 29.319l-5.517 24.276C523.112 414.668 536 433.828 536 456c0 31.202-25.519 56.444-56.824 55.994-29.823-.429-54.35-24.631-55.155-54.447-.44-16.287 6.085-31.049 16.803-41.548H231.176C241.553 426.165 248 440.326 248 456c0 31.813-26.528 57.431-58.67 55.938-28.54-1.325-51.751-24.385-53.251-52.917-1.158-22.034 10.436-41.455 28.051-51.586L93.883 64H24C10.745 64 0 53.255 0 40V24C0 10.745 10.745 0 24 0h102.529c11.401 0 21.228 8.021 23.513 19.19L159.208 64H551.99c15.401 0 26.816 14.301 23.403 29.319l-47.273 208C525.637 312.246 515.923 320 504.717 320zM408 168h-48v-40c0-8.837-7.163-16-16-16h-16c-8.837 0-16 7.163-16 16v40h-48c-8.837 0-16 7.163-16 16v16c0 8.837 7.163 16 16 16h48v40c0 8.837 7.163 16 16 16h16c8.837 0 16-7.163 16-16v-40h48c8.837 0 16-7.163 16-16v-16c0-8.837-7.163-16-16-16z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

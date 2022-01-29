@@ -1,0 +1,1928 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://docs.v1engineering.com/electronics/dual-endstops/">
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Dual Endstops - V1 Engineering Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../v1.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#auto-square-dual-endstops" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="V1 Engineering Documentation" class="md-header__button md-logo" aria-label="V1 Engineering Documentation" data-md-component="logo">
+      
+  <img src="../../img/favicon.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            V1 Engineering Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dual Endstops
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    V1EngineeringInc/V1EngineeringInc-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="V1 Engineering Documentation" class="md-nav__button md-logo" aria-label="V1 Engineering Documentation" data-md-component="logo">
+      
+  <img src="../../img/favicon.ico" alt="logo">
+
+    </a>
+    V1 Engineering Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    V1EngineeringInc/V1EngineeringInc-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Build
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Build" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        MPCNC
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MPCNC" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          MPCNC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/intro/" class="md-nav__link">
+        Introduction to The MPCNC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/PParts/" class="md-nav__link">
+        MPCNC Primo Parts list
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/calculator/" class="md-nav__link">
+        Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/Ptable/" class="md-nav__link">
+        1-Table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/Pbase/" class="md-nav__link">
+        2-Base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/trucks/" class="md-nav__link">
+        3-Trucks
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/tops/" class="md-nav__link">
+        4-Tops
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/core/" class="md-nav__link">
+        5-Core
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/PZPage/" class="md-nav__link">
+        6-Z Axis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/squaring/" class="md-nav__link">
+        7-Squaring
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/PBelts/" class="md-nav__link">
+        8-Belts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/troubleshooting/" class="md-nav__link">
+        Trouble Shooting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_13" type="checkbox" id="__nav_2_1_13" >
+      
+      <label class="md-nav__link" for="__nav_2_1_13">
+        Previous Version
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Previous Version" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_13">
+          <span class="md-nav__icon md-icon"></span>
+          Previous Version
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/parts/" class="md-nav__link">
+        Parts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_13_3" type="checkbox" id="__nav_2_1_13_3" >
+      
+      <label class="md-nav__link" for="__nav_2_1_13_3">
+        Assembly
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Assembly" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/table/" class="md-nav__link">
+        Table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/conduit/" class="md-nav__link">
+        Conduit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/base/" class="md-nav__link">
+        Corners, Rollers, Base
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/z-axis/" class="md-nav__link">
+        Z-Axis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/middle-assm/" class="md-nav__link">
+        Middle Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/gantry/" class="md-nav__link">
+        Gantry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/final/" class="md-nav__link">
+        Final
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mpcnc/burly/belts/" class="md-nav__link">
+        Belts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        LowRider
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="LowRider" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          LowRider
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/calculator/" class="md-nav__link">
+        Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lowrider/version1/" class="md-nav__link">
+        Old Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        MP3DP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MP3DP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          MP3DP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/" class="md-nav__link">
+        Current Version
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/repeatassm/" class="md-nav__link">
+        Repeat Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3_3">
+        Previous Versions
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Previous Versions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Previous Versions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/version2/" class="md-nav__link">
+        Second Version
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mp3dp/version1/" class="md-nav__link">
+        First Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        ZenXY
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ZenXY" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          ZenXY
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/" class="md-nav__link">
+        ZenXY v2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/zen2calculator/" class="md-nav__link">
+        ZenXY v2 Build Calculator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/zen2assm1/" class="md-nav__link">
+        ZenXY v2 Assembly
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zenxy/og_zen/" class="md-nav__link">
+        Previous Version
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Control
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Control" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Some Control Board Options
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Some Control Board Options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Some Control Board Options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skrpro/" class="md-nav__link">
+        SKR Pro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ultimachine/" class="md-nav__link">
+        Ultimachine Boards
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ramps/" class="md-nav__link">
+        Ramps
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Steppers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Steppers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Steppers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../steppers/" class="md-nav__link">
+        Wiring The Steppers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Some Advanced Options
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Some Advanced Options" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Some Advanced Options
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1pi/" class="md-nav__link">
+        V1pi - Headless
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dual Endstops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dual Endstops
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    Basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugging-in-the-steppers" class="md-nav__link">
+    Plugging In The Steppers
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugging In The Steppers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skr-pro" class="md-nav__link">
+    SKR Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rambo" class="md-nav__link">
+    RAMBo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ramps" class="md-nav__link">
+    Ramps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mini-rambo" class="md-nav__link">
+    Mini-RAMBo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archim" class="md-nav__link">
+    Archim
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endstops" class="md-nav__link">
+    Endstops
+  </a>
+  
+    <nav class="md-nav" aria-label="Endstops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skr-pro_1" class="md-nav__link">
+    SKR Pro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rambo_1" class="md-nav__link">
+    RAMBo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ramps_1" class="md-nav__link">
+    Ramps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mini-rambo_1" class="md-nav__link">
+    Mini-RAMBo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archim_1" class="md-nav__link">
+    Archim
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firmware" class="md-nav__link">
+    Firmware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-calibration" class="md-nav__link">
+    Testing and Calibration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    Use
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#work-offsets" class="md-nav__link">
+    Work offsets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-lr/" class="md-nav__link">
+        Dual Endstops Low Rider
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Use
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Use" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Use
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      <label class="md-nav__link" for="__nav_4_1">
+        Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_1" type="checkbox" id="__nav_4_1_1" >
+      
+      <label class="md-nav__link" for="__nav_4_1_1">
+        Milling
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Milling" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Milling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/milling-basics/" class="md-nav__link">
+        Milling Basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/estlcam-basics/" class="md-nav__link">
+        EstlCAM Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/estlcam-2p5d/" class="md-nav__link">
+        EstlCAM Intermediate (2.5d)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/milling-metal/" class="md-nav__link">
+        Milling Metal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/Fengrave-vcarve-inlay/" class="md-nav__link">
+        F Engrave V-Carve
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_2" type="checkbox" id="__nav_4_1_2" >
+      
+      <label class="md-nav__link" for="__nav_4_1_2">
+        3D Printing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="3D Printing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Printing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/import-extruder/" class="md-nav__link">
+        Import Extruder
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" >
+      
+      <label class="md-nav__link" for="__nav_4_1_3">
+        Lasers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Lasers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lasers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/lasers/" class="md-nav__link">
+        Main
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/laser-engraving-mirrors/" class="md-nav__link">
+        Engraving Mirrors
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/drag-knife/" class="md-nav__link">
+        Drag Knife/Vinyl
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/foam-needle-cutter/" class="md-nav__link">
+        Needle Cutter
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      <label class="md-nav__link" for="__nav_4_2">
+        Troubleshoot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Troubleshoot" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshoot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/reverse-motor/" class="md-nav__link">
+        Reversing a Stepper
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Learn
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Learn" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Learn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs_info/" class="md-nav__link">
+        Editing mkdocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/software_overview/" class="md-nav__link">
+        Software Workflow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/repetier-host/" class="md-nav__link">
+        Repetier-Host
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../marlin-firmware/" class="md-nav__link">
+        Marlin Firmware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xloader/" class="md-nav__link">
+        XLoader
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/platformio/" class="md-nav__link">
+        PlatformIO
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino/" class="md-nav__link">
+        Arduino
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/gcode/" class="md-nav__link">
+        G-code
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/motion/" class="md-nav__link">
+        Motion
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/coordinates/" class="md-nav__link">
+        Coordinates
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/edit/master/docs/electronics/dual-endstops.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="auto-square-dual-endstops">Auto Square, Dual EndStops<a class="headerlink" href="#auto-square-dual-endstops" title="Permanent link">&para;</a></h1>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h2>
+<p>The Dual EndStop firmware update enables unprecedented precision more easily than ever before. Since
+day one I have never encouraged endstops be used, until now.</p>
+<p>The Mostly Printed CNC and LowRider CNC are unique in the fact that two of the axes are powered at
+each end of the axis. Using this fact and the new dual endstop firmware we can now more precisely
+and accurately set the position of every single stepper on the machine independently. This should
+reliably give you repeat-ability on the order of your endstops resolution, even after powering off.</p>
+<p><img alt="Squaremelons" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Squaremelon.jpg" width="400" /></p>
+<p>Before this new firmware update all the machines in this category relied 100% on the users build
+accuracy, or manual measuring. This involves setting of each axis before engaging the steppers and
+locking it in place. If the steppers are ever disengaged during use only the side of the axis with
+an endstop can accurately be accounted for. This makes fixturing, tool changes, and multi-day jobs
+extremely difficult to get repeatable results. A poor build or lack of axis alignment before each
+job will result in a non-square skewed axis. A skewed axis will result in ovals and parallelograms
+instead of circles and 90° cornered rectangles. Changes in build accuracy due to use and
+environmental conditions need to be adjusted out or accounted for manually. Now just a minor offset
+adjustment will correct this.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F-tw3WuV8jk"
+  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<hr />
+<h2 id="plugging-in-the-steppers">Plugging In The Steppers<a class="headerlink" href="#plugging-in-the-steppers" title="Permanent link">&para;</a></h2>
+<p>Marlin&rsquo;s extruders=0 or remapping of pins is used in the firmware to allow the use of all the control boards drivers. The
+unused extruder driver/s are used for the extra stepper/s.</p>
+<h3 id="skr-pro">SKR Pro<a class="headerlink" href="#skr-pro" title="Permanent link">&para;</a></h3>
+<p>If the firmware is set for EXTRUDERS=0 then E0 becomes X1 and E1 becomes Y2. (or LR would be E0=Y2
+E1=Z2)</p>
+<p><div class="lightgallery"><a data-sub-html="dual 0" href="https://www.v1engineering.com/wp-content/uploads/2020/07/dual2-scaled.jpg"><img alt="dual 0" src="https://www.v1engineering.com/wp-content/uploads/2020/07/dual2-scaled.jpg" width="400" /></a></div></p>
+<h3 id="rambo">RAMBo<a class="headerlink" href="#rambo" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="Rambo1" href="https://www.v1engineering.com/wp-content/uploads/2017/11/Rambo.jpg"><img alt="Rambo1" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Rambo.jpg" width="400" />
+</a></div><div class="lightgallery"><a data-sub-html="Rambo2" href="https://www.v1engineering.com/wp-content/uploads/2017/11/IMG_20180529_175849.jpg"><img alt="Rambo2" src="https://www.v1engineering.com/wp-content/uploads/2017/11/IMG_20180529_175849.jpg" width="400" /> </a></div></p>
+<h3 id="ramps">Ramps<a class="headerlink" href="#ramps" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="Ramps" href="https://www.v1engineering.com/wp-content/uploads/2017/11/Ramps.jpg"><img alt="Ramps" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Ramps.jpg" width="400" /></a></div></p>
+<h3 id="mini-rambo">Mini-RAMBo<a class="headerlink" href="#mini-rambo" title="Permanent link">&para;</a></h3>
+<p>This board only has 4 drivers available and can easily be used with the LowRider CNC but cannot full take advantage of the new firmware with the MPCNC.</p>
+<p><div class="lightgallery"><a data-sub-html="miniRambo" href="https://www.v1engineering.com/wp-content/uploads/2017/11/MiniRAMBo.jpg"><img alt="miniRambo" src="https://www.v1engineering.com/wp-content/uploads/2017/11/MiniRAMBo.jpg" width="400" /></a></div></p>
+<h3 id="archim">Archim<a class="headerlink" href="#archim" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="Archim" href="https://www.v1engineering.com/wp-content/uploads/2017/11/Archim.jpg"><img alt="Archim" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Archim.jpg" width="400" /></a></div></p>
+<h2 id="endstops">Endstops<a class="headerlink" href="#endstops" title="Permanent link">&para;</a></h2>
+<p>The min pins are used as normal for the first stepper and the max pins are used for the second stepper on that axis (X2, Y2, Z2), still as a min. For example, X1 pairs with Xmin, X2 pairs with Xmax.</p>
+<p>DO NOT USE THE + (positive) Terminal. <strong>S &amp; –</strong> (signal and Negative) Only</p>
+<ul>
+<li>Xmin=X1 limit switch</li>
+<li>Xmax=X2 limit switch</li>
+<li>Ymin=Y1 limit Switch</li>
+<li>Ymax=Y2 Limit switch</li>
+<li>Zmin=Touch probe. Signal pin to plate, negative to tool.</li>
+</ul>
+<p>For the safest configuration the endstops should be wired in the Normally Closed position (NC), to
+prevent wire disconnects from damaging the machine during the homing sequence.</p>
+<p>Mechanical endstops are connected to the signal and ground pins filtered or optical endstops use all
+three pins, connect these with extreme caution. <strong>Using the wrongs pins will damage your control
+board.</strong></p>
+<p>Optical endstops are not recommended on a machine used for milling or routing. The debris can
+inhibit there function.</p>
+<h3 id="skr-pro_1">SKR Pro<a class="headerlink" href="#skr-pro_1" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="endstops" href="https://www.v1engineering.com/wp-content/uploads/2020/07/endstops-scaled.jpg"><img alt="endstops" src="https://www.v1engineering.com/wp-content/uploads/2020/07/endstops-scaled.jpg" width="400" /></a></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not use the + (positive) pins or you will ruin your SKR Pro board.</p>
+</div>
+<h3 id="rambo_1">RAMBo<a class="headerlink" href="#rambo_1" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="pic" href="https://www.v1engineering.com/wp-content/uploads/2018/02/Ramboboard.png"><img alt="pic" src="https://www.v1engineering.com/wp-content/uploads/2018/02/Ramboboard.png" width="400" />
+</a></div><div class="lightgallery"><a data-sub-html="pic" href="https://www.v1engineering.com/wp-content/uploads/2017/11/Rambo14-DUAL-help-fixed.jpg"><img alt="pic" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Rambo14-DUAL-help-fixed.jpg" width="400" /></a></div></p>
+<p>Pay attention the pins are opposite each other, but clearly labeled on the board.    </p>
+<h3 id="ramps_1">Ramps<a class="headerlink" href="#ramps_1" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="pic" href="https://www.v1engineering.com/wp-content/uploads/2017/11/800px-Arduinomega1-4connectors.png"><img alt="pic" src="https://www.v1engineering.com/wp-content/uploads/2017/11/800px-Arduinomega1-4connectors.png" width="400" /></a></div></p>
+<h3 id="mini-rambo_1">Mini-RAMBo<a class="headerlink" href="#mini-rambo_1" title="Permanent link">&para;</a></h3>
+<p>This board only has 4 drivers available and can easily be used with the LowRider CNC (Y axis) but
+cannot full take advantage of the new firmware with the MPCNC.</p>
+<p><div class="lightgallery"><a data-sub-html="pic" href="https://www.v1engineering.com/wp-content/uploads/2017/11/MiniRambo1.3a-connections.png"><img alt="pic" src="https://www.v1engineering.com/wp-content/uploads/2017/11/MiniRambo1.3a-connections.png" width="400" /></a></div></p>
+<h3 id="archim_1">Archim<a class="headerlink" href="#archim_1" title="Permanent link">&para;</a></h3>
+<p><div class="lightgallery"><a data-sub-html="pic" href="https://www.v1engineering.com/wp-content/uploads/2017/11/785px-Archim1.0A_connections.png"><img alt="pic" src="https://www.v1engineering.com/wp-content/uploads/2017/11/785px-Archim1.0A_connections.png" width="400" /></a></div></p>
+<hr />
+<h2 id="firmware">Firmware<a class="headerlink" href="#firmware" title="Permanent link">&para;</a></h2>
+<p>The dual endstop firmware is on the V1 Engineering <a href="https://docs.v1engineering.com/electronics/marlin-firmware/">Marlin Builder page</a>
+page.</p>
+<p>Remember small 1mm moves when initially powering it up, if driving your steppers the wrong way you
+can rip your machine apart. If your steppers are moving the wrong direction, <strong>completely power off
+your board before flipping the plug over.</strong></p>
+<hr />
+<h2 id="testing-and-calibration">Testing and Calibration<a class="headerlink" href="#testing-and-calibration" title="Permanent link">&para;</a></h2>
+<p>After all the endstops have been connected issuing a <code>M119</code> command will let you see the current
+status of each endstop. You should check that each endstop registers both an open and closed status
+before proceeding. Open when not touching and closed when they are. You can test them individually
+by closing each one by hand and running an <code>M119</code>. Also verify the X1 corresponds to the X1 stepper.</p>
+<p>Then verify a positive movement is away from the end stops.</p>
+<p>The unfortunately designated <code>M666</code> lets you test your offset to quickly calibrate your machine. Using
+the command <code>M666 X0.72</code> would offset the X1 stepper 0.72mm away from its endstop, Y! can also be
+used. To verify your current settings during calibration just an <code>M666</code> will show the current offsets.
+Once the correct offset are found you should input them into your firmware.</p>
+<p>This is to simplify the actual placement of the endstops themselves, you only need to get them such
+that the X1 or Y1 endstop is at or slightly behind where it needs to be within a few Millimeters is
+best.</p>
+<ol>
+<li>You can verify how square your axis is by measuring the diagonals of the largest rectangle you can
+   draw in your build area. The larger the more accurate…but also harder to measure. I only have 6″
+   calipers but I was more accurate with a tape measure at my 440mm available diagonal.</li>
+<li>Measure the diagonals to the X1 and Y1 endstops blocks.</li>
+<li>Offset the endstop that has the short dimension by the amount it is short or just a hair over. So
+   if the X1 diagonal was 1mm short you would offset X1 by 1mm. M666 X1. Tip – If it is more than 2mm
+   off move the stop block, each belt tooth is 2mm.</li>
+<li>Draw a fresh one to verify. If that is correct you should edit your firmware to make this change
+   permanent in configuration.h Or add it to all of your Gcode.</li>
+<li>Enjoy!</li>
+</ol>
+<p>Care should be taken to use as little pen pressure as possible with the finest tip possible to get
+the most accurate results and a pen mount with some give should be used, <a href="https://www.thingiverse.com/thing:1612207">example pen
+mount</a>.</p>
+<p>My trials and tribulations figuring this out….Feel free to make fun of me. <a href="https://www.v1engineering.com/forum/topic/accuracy-step-1-pen/">Forum
+link</a>.</p>
+<hr />
+<h2 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h2>
+<p>First, most jobs will not benefit from using endstops. Getting the machine close and just running a
+quick one off carving or sign has no need to go through all the extra steps. People new to the CNC
+world should not use this; this is an advanced technique. My support for this will be limited.</p>
+<ul>
+<li>
+<p>You can now use the machine in two ways. Quick one off jobs as you always would setting the home
+position by hand and just running the job. Or by starting each job with a <code>G28</code> (if using a touch
+plate) you can now reference or return to that position at any time. If you are not using a touch
+plate you can use <code>G28 X Y</code></p>
+</li>
+<li>
+<p>You can use fixtures at a set reference points on the table to do repeat jobs or multiple sided
+cuts utilizing CAM based work offsets or scripts.</p>
+</li>
+<li>
+<p>Tool changes can be done with multiple gcodes so you can do repeat jobs in order of bit used
+instead of per piece depending on if changing the part of the bit is the faster choice.</p>
+</li>
+<li>
+<p>Jobs can be restarted in case of power outage, tool breaks, long multi day jobs, apply paint
+between cuts, etc.</p>
+</li>
+<li>
+<p>If you don’t need the endstops you can just insert the command, <code>G92 X0 Y0 Z0</code>, in your gcode before
+the cut starts. This should allow for normal use without homing or work offsets, also no squaring.</p>
+</li>
+</ul>
+<p>For more info please see the <a href="../../tools/milling-basics/">Milling Basics</a> page.</p>
+<hr />
+<h2 id="work-offsets">Work offsets<a class="headerlink" href="#work-offsets" title="Permanent link">&para;</a></h2>
+<p>Make sure your job has a work offset if you use the endstops.</p>
+<p>A typical part has the gcode built with the origin at the parts corner. If you were to cut out that
+part it would result in going negative past your endstops and misalign your machine.</p>
+<p><div class="lightgallery"><a data-sub-html="negative moves" href="https://www.v1engineering.com/wp-content/uploads/2017/11/Negative.jpg"><img alt="negative moves" src="https://www.v1engineering.com/wp-content/uploads/2017/11/Negative.jpg" width="400" /></a></div></p>
+<p>Negative moves do not work on the X and Y axis with endstops.</p>
+<p><div class="lightgallery"><a data-sub-html="stay positive" href="https://www.v1engineering.com/wp-content/uploads/2017/11/good.jpg"><img alt="stay positive" src="https://www.v1engineering.com/wp-content/uploads/2017/11/good.jpg" width="400" /></a></div></p>
+<p>Moving the origin in your CAM program is the easiest fix.</p>
+<p>To get a more precise work offset it is best to add it in your CAD file. This can be done with a
+bounding box, cut it as a separate path and used to position your material.</p>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../v1pi/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              V1pi - Headless
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../dual-lr/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Dual Endstops Low Rider
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA</a> Copyright 2021 V1Engineering Inc.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://v1engineering.com" target="_blank" rel="noopener" title="v1engineering.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://shop.v1engineering.com" target="_blank" rel="noopener" title="shop.v1engineering.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M504.717 320H211.572l6.545 32h268.418c15.401 0 26.816 14.301 23.403 29.319l-5.517 24.276C523.112 414.668 536 433.828 536 456c0 31.202-25.519 56.444-56.824 55.994-29.823-.429-54.35-24.631-55.155-54.447-.44-16.287 6.085-31.049 16.803-41.548H231.176C241.553 426.165 248 440.326 248 456c0 31.813-26.528 57.431-58.67 55.938-28.54-1.325-51.751-24.385-53.251-52.917-1.158-22.034 10.436-41.455 28.051-51.586L93.883 64H24C10.745 64 0 53.255 0 40V24C0 10.745 10.745 0 24 0h102.529c11.401 0 21.228 8.021 23.513 19.19L159.208 64H551.99c15.401 0 26.816 14.301 23.403 29.319l-47.273 208C525.637 312.246 515.923 320 504.717 320zM408 168h-48v-40c0-8.837-7.163-16-16-16h-16c-8.837 0-16 7.163-16 16v40h-48c-8.837 0-16 7.163-16 16v16c0 8.837 7.163 16 16 16h48v40c0 8.837 7.163 16 16 16h16c8.837 0 16-7.163 16-16v-40h48c8.837 0 16-7.163 16-16v-16c0-8.837-7.163-16-16-16z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
