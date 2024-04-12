@@ -120,9 +120,51 @@ Z3 to E2 port
 |  3  |
 |     |
 |1   2|
+### Canbus options
+### Z-brakes
+The MP3DP printer has 3 moving z motors that raise the bed.  When conditions align, the bed can drop and cause damage.  The stepper motors can serve as brakes to slow the bed descent, though they typically do not act as parking brakes to actually hold the bed in place with the belt and gearing used in the MP3DP v4 design.
+When tuning and setting up klipper, a processor restart is required to implement a new change.  If the system was homed, then there is an opportunity for the bed to drop.  Bed crashes can occur from
+* power outages
+* emergency stop conditions
+* faults
+* even at the end of successful prints if slicers and end_print macros are not carefully set up
 
+An uncontrolled drop can impact and scare you at the least or lead to cracked parts or even cooked control boards in extreme cases depending on the weight of the bed or gantry.  This board is a little insurance to protect the expensive electronics and minimize mechanical impact.
+In Marlin, bed drops can also occur, though typically less often because most klipper style changes that result in a bed drop require a firmware recompile and board reflash on Marlin, so they are both less frequent and more often prepared for well in advance.
 
-### Firmware
+#### Wiring your own Z-brakes
+A single pole relay connecting two of the motor coil wires to C and NC will short the motor coil.  You can buy one of these blue relays and connect it to a fan output.  For the stepper motors, typically the black and green wires can be shorted together for the brake or the blue and the red.  Testing the motor can be as easy as disconnecting power and turning the motor and then shorting the wires to feel the difference. 
+[photo here of simple relay]
+#### Buying a Z-brake board available in the shop
+Another option for brakes is to buy a premade board developed specifically for this printer.  This grass-roots effort stemmed from testing out what conditions worked for brakes on the mp3dp v4.  See the "use z-brakes" thread for the back story if interested.
+[photo here of z-brake board]
+Inputs with screw terminal connections: 
+* 24v
+* Ground
+* 5 volt signal (recommend unused TFT TX pin)
+* motor wires to control board such as octopus, or manta.
+
+outputs with screw terminal connections:  wires to z motors
+
+ The brake board takes 24 V input from your printer power supply, ground, and then it uses a 5 V signal from an mcu pin such as the TFT TX pin recommended if using klipper and a BQ/BTT board since the BQ TFTs are not klipper supported and that pin does not have any additional clamping or pull-up circuitry on it.
+
+How it works: 
+Brake board is a pass-thru for the stepper motor wiring between the stepper driver and the stepper.  The brake works by shorting one or both stepper motor coils for each motor connected when no power is applied to the signal pin.  If the 24v line has power, the red led will be on to show brakes are active until a signal from the board processor turns off the brake, which is signalled by the green LED and the motors will then function normally.  If either the 5V signal or the 24v motor power are disrupted then the brakes are activated.
+
+A jumper is included for each stepper to brake both coils or just one from each motor.  A single motor coil brake is much louder of a buzzing as the bed moves than the two coil drop, which is very quiet.
+
+Klipper code to add:
+```
+[multi_pin z_enable]
+pins: !PG5, PA9  # on octopus, !PG5 is the driver pin pulled low to enable TMC2209 z stepper, PA9 is TFT TX pin
+
+[stepper_z]
+enable_pin: multi_pin:z_enable # this used to be !PG5 , but with the multipin, they both activate simultaneously
+```
+### Klipper example config files
+If using klipper, it is often easier to start with another user's working printer.cfg file.  There are several available on github.  Be sure to verify the specific pin locations for your board and for the connection being made to your board.
+[placeholder for link here]
+### Marlin Firmware
 
 Firmware is in the builder for an SKR Pro, V13RP_V4_SkrPro_2209-2.x.x.zip , configured for 200x200x200. If you make size changes you will need to change the bed size, and/or mesh size, and/or Z height. Then recompile and flash.
 
